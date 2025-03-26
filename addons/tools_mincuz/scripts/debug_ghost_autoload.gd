@@ -1,4 +1,4 @@
-class_name Mincuz extends Node
+class_name DebugGhostAutoload extends Node
 
 static var GHOST_2D_SCENE_PATH := "res://addons/tools_mincuz/scenes/debug_ghost_2d.tscn"
 static var GHOST_2D_SCENE : PackedScene :
@@ -8,7 +8,7 @@ static var GHOST_3D_SCENE_PATH := "res://addons/tools_mincuz/scenes/debug_ghost_
 static var GHOST_3D_SCENE : PackedScene :
 	get: return load(GHOST_3D_SCENE_PATH)
 
-static var inst : Mincuz
+static var inst : DebugGhostAutoload
 
 static var debug_ghost_exists : bool :
 	get: return inst.get_tree().get_node_count_in_group(&"debug_ghost") > 0
