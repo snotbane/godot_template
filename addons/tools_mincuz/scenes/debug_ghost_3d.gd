@@ -20,6 +20,15 @@ var is_sprinting : bool :
 
 
 func _ready() -> void:
+
+	## Needs to copy existing directly instead of borrowing
+	var existing := self.get_viewport().get_camera_3d()
+	self.global_transform = existing.global_transform
+	self.projection = existing.projection
+	self.fov = existing.fov
+	self.size = existing.size
+	self.frustum_offset = existing.frustum_offset
+
 	self.make_current()
 
 	revert_mouse_mode = Input.mouse_mode
