@@ -56,6 +56,7 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ijnsd")
 
 [node name="label" type="Label" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -100,6 +101,53 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="color_rect_6" type="ColorRect" parent="reference_lines"]
+material = SubResource("ShaderMaterial_yo73g")
+custom_minimum_size = Vector2(2, 64)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1.0
+offset_top = -32.0
+offset_right = 1.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="teleport_indicator" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.785398
+mouse_filter = 2
+
+[node name="color_rect_5" type="ColorRect" parent="teleport_indicator"]
+material = SubResource("ShaderMaterial_yo73g")
+custom_minimum_size = Vector2(64, 2)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -1.0
+offset_right = 32.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="color_rect_6" type="ColorRect" parent="teleport_indicator"]
 material = SubResource("ShaderMaterial_yo73g")
 custom_minimum_size = Vector2(2, 64)
 layout_mode = 1

@@ -1,36 +1,45 @@
-extends Camera3D
 
+## Allows the user to freely move around 3D scenes for debugging purposes.
+extends Node3D
+
+
+## If enabled, the [member Input.mouse_mode] will be set to [member Input.MOUSE_MODE_VISIBLE] when this node is created (and reverted on deletion).
 @export var unlock_mouse_mode : bool = false
 
+## Movement speed.
 @export var speed : float = 1.0
+## Speed multiplier while sprinting.
 @export var sprint_multiplier : float = 5.0
 
-## If enabled, camera will always move up along the global gravity up vector and laterally relative to that (Minecraft creative flight controls)
+## If enabled, camera will always move up along the global gravity up vector and laterally relative to that (Minecraft creative flight controls).
 @export var global_move_axis := true
 
+## If enabled, the camera will always stay right side up. Otherwise, the camera may be turned upside down.
 @export var turn_clamp_pitch : bool = true
+## Turn speed (degrees per second) via keyboard/gamepad.
 @export var turn_speed : float = 90.0
+## Turn speed via mouse.
 @export var turn_speed_mouse : float = 10.0
+
 
 var revert_mouse_mode : Input.MouseMode
 var turn_input_vector_mouse : Vector2
+
 
 var is_sprinting : bool :
 	get: return Input.is_action_pressed(&"ghost_sprint")
 
 
-func _ready() -> void:
+func populate_from_camera(camera: Camera3D) -> void:
+	change_mouse_mode()
+	self.global_transform = camera.global_transform
+	var node := camera.duplicate(0)
+	node.transform = Transform3D.IDENTITY
+	self.add_child(node)
+	node.make_current()
 
-	## Needs to copy existing directly instead of borrowing
-	var existing := self.get_viewport().get_camera_3d()
-	self.global_transform = existing.global_transform
-	self.projection = existing.projection
-	self.fov = existing.fov
-	self.size = existing.size
-	self.frustum_offset = existing.frustum_offset
 
-	self.make_current()
-
+func change_mouse_mode() -> void:
 	revert_mouse_mode = Input.mouse_mode
 	if unlock_mouse_mode:
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE

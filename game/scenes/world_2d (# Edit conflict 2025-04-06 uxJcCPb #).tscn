@@ -1,15 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://ri5kmtd4f554"]
+[gd_scene load_steps=3 format=3 uid="uid://dagiu82ya7fcu"]
 
 [ext_resource type="Texture2D" uid="uid://cvidnrupvk6e" path="res://icon.svg" id="1_g6tk3"]
 [ext_resource type="PackedScene" uid="uid://d3yjatu54gemb" path="res://addons/tools_mincuz/scenes/debug_play_from_view_2d.tscn" id="2_5fs5m"]
 
 [node name="world_2d" type="Node2D"]
 
-[node name="debug_play_from_view_2d" parent="." node_paths=PackedStringArray("position_node") instance=ExtResource("2_5fs5m")]
-position = Vector2(226.28, -82.2035)
-scale = Vector2(2.07144, 2.07144)
-start_in_debug_ghost_mode = true
-position_node = NodePath("../camera_2d")
+[node name="debug_play_from_view_2d" parent="." instance=ExtResource("2_5fs5m")]
+visible = false
+position = Vector2(241.261, -21.7031)
 
 [node name="camera_2d" type="Camera2D" parent="."]
 

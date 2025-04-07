@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bte4xo8vh1jd6"]
+[gd_scene load_steps=6 format=3 uid="uid://crmhdrf5dbm66"]
 
 [ext_resource type="PackedScene" uid="uid://om4cv5l72pyt" path="res://addons/tools_mincuz/scenes/debug_play_from_view_3d.tscn" id="1_3rtx2"]
 
@@ -16,13 +16,12 @@ tonemap_mode = 2
 
 [node name="world_3d" type="Node3D"]
 
-[node name="debug_play_from_view_3d" parent="." node_paths=PackedStringArray("position_node", "rotation_node_x", "rotation_node_y", "camera") instance=ExtResource("1_3rtx2")]
-transform = Transform3D(0.671878, -0.442514, 0.593937, 0, 0.8019, 0.597458, -0.740662, -0.401419, 0.538779, 1.81241, 1.82315, 1.64409)
-start_in_debug_ghost_mode = true
+[node name="debug_play_from_view_3d" parent="." node_paths=PackedStringArray("position_node", "rotation_node_x", "rotation_node_y") instance=ExtResource("1_3rtx2")]
+transform = Transform3D(0.679602, -0.289553, 0.674018, 0, 0.918805, 0.394712, -0.733581, -0.268247, 0.624421, 2.05678, 1.20447, 1.90543)
+visible = false
 position_node = NodePath("../camera_3d")
 rotation_node_x = NodePath("../camera_3d")
 rotation_node_y = NodePath("../camera_3d")
-camera = NodePath("../camera_3d")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_uw00e")
