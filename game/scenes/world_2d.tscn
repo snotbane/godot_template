@@ -6,8 +6,8 @@
 [node name="world_2d" type="Node2D"]
 
 [node name="debug_play_from_view_2d" parent="." node_paths=PackedStringArray("position_node") instance=ExtResource("2_5fs5m")]
-position = Vector2(226.28, -82.2035)
-scale = Vector2(2.07144, 2.07144)
+position = Vector2(-50.4919, 25.7309)
+scale = Vector2(1.74963, 1.74963)
 start_in_debug_ghost_mode = true
 position_node = NodePath("../camera_2d")
 
