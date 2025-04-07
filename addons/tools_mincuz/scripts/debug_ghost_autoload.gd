@@ -24,14 +24,8 @@ func _ready():
 
 
 func _input(event: InputEvent):
-	if ghost and event.is_action_pressed(&"ghost_teleport"):
-		teleport_ghost()
-	elif event.is_action_pressed(&"ghost_toggle"):
+	if event.is_action_pressed(&"ghost_toggle"):
 		toggle_ghost()
-
-
-func teleport_ghost() -> void:
-	pass
 
 
 func create_ghost_2d() -> void:

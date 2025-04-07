@@ -34,17 +34,10 @@ func _ready() -> void:
 	if not can_be_activated: return
 
 	if move_pawn_node and visible_or_always:
-		if position_node: position_node.global_position = self.global_position
-		if rotation_node_x: rotation_node_x.global_rotation.x = self.global_rotation.x
-		if rotation_node_y: rotation_node_y.global_rotation.y = self.global_rotation.y
+		self.activate()
 
 	if start_in_debug_ghost_mode and visible_or_always and DebugGhostAutoload.inst.ghost == null:
 		create_ghost.call_deferred()
-
-
-func create_ghost() -> void:
-	DebugGhostAutoload.inst.create_ghost_3d()
-	DebugGhostAutoload.inst.ghost.populate_from_camera(self.get_viewport().get_camera_3d())
 
 
 func _process(_delta: float) -> void:
@@ -52,3 +45,14 @@ func _process(_delta: float) -> void:
 
 	var editor_camera := EditorInterface.get_editor_viewport_3d().get_camera_3d()
 	self.global_transform = editor_camera.global_transform
+
+
+func activate(to: Node3D = self) -> void:
+	if position_node: position_node.global_position = self.global_position
+	if rotation_node_x: rotation_node_x.global_rotation.x = self.global_rotation.x
+	if rotation_node_y: rotation_node_y.global_rotation.y = self.global_rotation.y
+
+
+func create_ghost() -> void:
+	DebugGhostAutoload.inst.create_ghost_3d()
+	DebugGhostAutoload.inst.ghost.populate_from_camera(self.get_viewport().get_camera_3d())

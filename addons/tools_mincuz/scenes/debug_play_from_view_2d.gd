@@ -31,16 +31,10 @@ func _ready() -> void:
 	if not can_be_activated: return
 
 	if move_pawn_node and visible_or_always:
-		if position_node: position_node.global_position = self.global_position
-		if rotation_node: rotation_node.global_rotation = self.global_rotation
+		self.activate()
 
 	if start_in_debug_ghost_mode and visible_or_always and DebugGhostAutoload.inst.ghost == null:
 		create_ghost.call_deferred()
-
-
-func create_ghost() -> void:
-	DebugGhostAutoload.inst.create_ghost_2d()
-	DebugGhostAutoload.inst.ghost.populate_from_transform(self.global_transform)
 
 
 func _process(_delta: float) -> void:
@@ -48,3 +42,13 @@ func _process(_delta: float) -> void:
 
 	self.global_transform = EditorInterface.get_editor_viewport_2d().global_canvas_transform
 	self.global_position = (-self.global_transform.origin / self.global_transform.get_scale()) + Vector2(EditorInterface.get_editor_viewport_2d().size) / (self.global_transform.get_scale() * 2.0)
+
+
+func activate(to: Node2D = self) -> void:
+	if position_node: position_node.global_position = to.global_position
+	if rotation_node: rotation_node.global_rotation = to.global_rotation
+
+
+func create_ghost() -> void:
+	DebugGhostAutoload.inst.create_ghost_2d()
+	DebugGhostAutoload.inst.ghost.populate_from_transform(self.global_transform)
